@@ -1,13 +1,16 @@
 import csv
 import statistics
 from collections import defaultdict
+from pathlib import Path
 
 
-INPUT_FILE = "final_experiment_results.csv"
-OUTPUT_FILE = "final_experiment_summary.csv"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+INPUT_FILE = PROJECT_ROOT / "data" / "final_experiment_results.csv"
+OUTPUT_FILE = PROJECT_ROOT / "data" / "final_experiment_summary.csv"
 
 
-def read_results(filename: str) -> list[dict]:
+def read_results(filename: str | Path) -> list[dict]:
     """Read the experiment results from a CSV file."""
     with open(filename, mode="r", newline="") as file:
         reader = csv.DictReader(file)
@@ -66,7 +69,7 @@ def create_summary(results: list[dict]) -> list[dict]:
     return summary_rows
 
 
-def save_summary(summary_rows: list[dict], filename: str):
+def save_summary(summary_rows: list[dict], filename: str | Path):
     """Save the summary statistics to a CSV file."""
     fieldnames = [
         "policy",

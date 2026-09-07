@@ -3,15 +3,15 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 # This is the summary file created from the raw experiment results.
-SUMMARY_FILE = "final_experiment_summary.csv"
+SUMMARY_FILE = PROJECT_ROOT / "data" / "final_experiment_summary.csv"
 
 # This folder will store the finished figure.
-OUTPUT_FOLDER = Path("figures")
+OUTPUT_FOLDER = PROJECT_ROOT / "figures"
 
 
-def read_summary(filename: str) -> list[dict]:
+def read_summary(filename: str | Path) -> list[dict]:
     """Read the summary CSV file."""
 
     with open(filename, mode="r", newline="") as file:

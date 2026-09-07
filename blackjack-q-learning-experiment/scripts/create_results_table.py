@@ -1,11 +1,14 @@
 import csv
+from pathlib import Path
 
 
-INPUT_FILE = "results/final_experiment_summary.csv"
-OUTPUT_FILE = "results/results_table_for_word.csv"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+INPUT_FILE = PROJECT_ROOT / "data" / "final_experiment_summary.csv"
+OUTPUT_FILE = PROJECT_ROOT / "results" / "results_table_for_word.csv"
 
 
-def read_summary(filename: str) -> list[dict]:
+def read_summary(filename: str | Path) -> list[dict]:
     """Read the summary CSV file."""
 
     with open(filename, mode="r", newline="") as file:
@@ -89,7 +92,7 @@ def create_table_rows(summary_rows: list[dict]) -> list[dict]:
     return table_rows
 
 
-def save_table(table_rows: list[dict], filename: str):
+def save_table(table_rows: list[dict], filename: str | Path):
     """Save the formatted table as a CSV file."""
 
     fieldnames = [

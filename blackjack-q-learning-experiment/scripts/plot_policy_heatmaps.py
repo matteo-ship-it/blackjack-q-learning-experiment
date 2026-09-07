@@ -5,14 +5,13 @@ import numpy as np
 import seaborn as sns
 from matplotlib.patches import Patch
 
-from blackjack_q_learning_experiment import (
-    reduced_basic_strategy,
-    train_q_learning_agent,
-)
+from src.policies import reduced_basic_strategy
+from src.training import train_q_learning_agent
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 # The heatmap figure will be saved in this folder.
-OUTPUT_FOLDER = Path("figures")
+OUTPUT_FOLDER = PROJECT_ROOT / "figures"
 
 # Use the 1,000,000 episode seed whose evaluation is closest to the mean.
 TRAINING_BUDGET = 1_000_000
