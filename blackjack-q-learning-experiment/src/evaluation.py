@@ -4,6 +4,7 @@ from tqdm import tqdm
 
 from .blackjack_agent import BlackjackAgent
 
+
 def evaluate_policy(policy_function, number_of_episodes: int, seed: int) -> dict:
     """Evaluate a fixed policy over a given number of episodes."""
     env = gym.make("Blackjack-v1", natural=True, sab=False)

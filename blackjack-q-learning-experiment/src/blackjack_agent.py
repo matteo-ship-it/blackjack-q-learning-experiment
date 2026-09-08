@@ -3,6 +3,7 @@ from collections import defaultdict
 import gymnasium as gym
 import numpy as np
 
+
 class BlackjackAgent:
     def __init__(
         self,
@@ -45,7 +46,8 @@ class BlackjackAgent:
         # If the episode ended, there is no future Q-value.
         if terminated:
             future_q_value = 0.0
-        else: future_q_value = np.max(self.q_values[next_obs])
+        else:
+            future_q_value = np.max(self.q_values[next_obs])
 
         temporal_difference = (
             reward + self.discount_factor * future_q_value - self.q_values[obs][action]
@@ -59,4 +61,3 @@ class BlackjackAgent:
     def decay_epsilon(self):
         """Reduce epsilon after each training episode."""
         self.epsilon = max(self.final_epsilon, self.epsilon - self.epsilon_decay)
-

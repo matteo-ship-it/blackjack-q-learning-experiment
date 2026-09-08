@@ -37,7 +37,7 @@ def run_baseline_experiments(results):
             evaluation_result = evaluate_policy(
                 policy_function=policy_function,
                 number_of_episodes=EVALUATION_EPISODES,
-                seed=100 +seed,
+                seed=100 + seed,
             )
 
             average_reward = evaluation_result["average_reward"]
