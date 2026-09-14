@@ -4,4 +4,21 @@ The program trains the agent with different training budgets and random seeds an
 
 The main implementation is located in `src/`, while the experiment and analysis scripts are located in `scripts/`.
 
-The tests can be run with `python -m unittest discover -s tests -v`.
+# Reproducibility
+The experiment can be reproduced by installing the dependencies listed in `requirements.txt` and running the scripts from the repository root:
+
+```bash
+pip install -r requirements.txt
+python scripts/run_experiments.py
+python scripts/create_experiment_summary.py
+python scripts/create_results_table.py
+python scripts/plot_mean_reward.py
+python scripts/plot_policy_heatmaps.py
+```
+
+# Tests
+The automated tests can be run with:
+
+```bash
+python -m unittest discover -s tests -v
+```
